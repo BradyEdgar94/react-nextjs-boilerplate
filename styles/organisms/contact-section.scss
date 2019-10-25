@@ -1,0 +1,124 @@
+.contact-section {
+  .section-header {
+    padding-bottom: 3rem;
+  }
+
+  .contact-about {
+    h3 {
+      font-size: 3.6rem;
+      margin: 0 0 1rem 0;
+      padding: 0;
+      line-height: 1;
+      font-family: $primary-font;
+      font-weight: 300;
+      letter-spacing: 0.3rem;
+      text-transform: uppercase;
+      color: $primary;
+    }
+
+    p {
+      font-size: 1.4rem;
+      line-height: 2.4rem;
+      font-family: $primary-font;
+      color: #888;
+    }
+  }
+
+  .social-links {
+    padding-bottom: 2rem;
+
+    a {
+      font-size: 1.8rem;
+      display: inline-block;
+      background: #fff;
+      color: $primary;
+      line-height: 1;
+      padding: 0.8rem 0;
+      margin-right: 0.4rem;
+      border-radius: 50%;
+      text-align: center;
+      width: 3.6rem;
+      height: 3.6rem;
+      transition: 0.3s;
+      border: 0.1rem solid $primary;
+
+      &:hover {
+        background: $primary;
+        color: #fff;
+      }
+    }
+  }
+
+  .info {
+    color: $secondary;
+
+    i {
+      font-size: 2.25rem;
+      color: $primary;
+      float: left;
+      line-height: 1;
+      margin-top: 0.25rem;
+    }
+
+    p {
+      padding: 0 0 1rem 3.6rem;
+      line-height: 2.8rem;
+      font-size: 1.4rem;
+    }
+
+  }
+
+  .form {
+    #sendmessage {
+      color: $primary;
+      border: 0.1rem solid $primary;
+      display: none;
+      text-align: center;
+      padding: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    #errormessage {
+      color: red;
+      display: none;
+      border: 0.1rem solid red;
+      text-align: center;
+      padding: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    #sendmessage.show, #errormessage.show, .show {
+      display: block;
+    }
+
+    .validation {
+      color: red;
+      display: none;
+      margin:  0 0 2rem;
+      font-weight: 400;
+      font-size: 1.3rem;
+    }
+
+    input, textarea {
+      border-radius: 0;
+      box-shadow: none;
+      font-size: 1.4rem;
+    }
+
+    button[type="submit"] {
+      background: $primary;
+      border: 0;
+      border-radius: 2rem;
+      padding: 0.8rem 3rem;
+      color: #fff;
+      transition: 0.3s;
+      
+      &:hover {
+        background: $primary-dark;
+        cursor: pointer;
+      }
+    }
+  }
+}

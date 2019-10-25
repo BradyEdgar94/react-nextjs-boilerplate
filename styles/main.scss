@@ -1,0 +1,34 @@
+/**
+  This is the main css file that sits in <head /> tag
+**/
+
+// Base
+@import "base/variables";
+@import "base/primative";
+
+// Atoms
+@import "atoms/clickables";
+@import "atoms/typography";
+@import "atoms/nprogress";
+@import "atoms/preloader";
+
+// Molecules
+@import "molecules/hero";
+@import "molecules/article-hero";
+@import "molecules/split-content-block";
+@import "molecules/section-header";
+@import "molecules/box-card";
+@import "molecules/counter";
+@import "molecules/floating-card";
+@import "molecules/client-card";
+@import "molecules/members-list";
+
+// Organisms
+@import "organisms/header";
+@import "organisms/nav";
+@import "organisms/footer";
+@import "organisms/contact-section";
+
+// Template
+@import "template/default";
+@import "template/blog-landng-page-template";

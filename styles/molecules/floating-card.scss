@@ -1,0 +1,52 @@
+.floating-card {
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+  margin: 0 1rem 4rem 1rem;
+  background: $white;
+  box-shadow: 0 1rem 2.9rem 0 rgba(68, 88, 144, 0.1);
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-0.5rem);
+  }
+
+  .icon {
+    position: absolute;
+    left: -2rem;
+    top: calc(50% - 3.2rem);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 6.4rem;
+    height: 6.4rem;
+
+  }
+
+  .title {
+    margin-left: 4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    a {
+      color: #111;
+    }
+  }
+
+  .box:hover .title a {
+    color: $primary;
+  }
+
+  .description {
+    font-size: 1.4rem;
+    margin-left: 4rem;
+    line-height: 2.4rem;
+    margin-bottom: 0;
+
+    p {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

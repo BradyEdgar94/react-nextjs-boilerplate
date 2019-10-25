@@ -1,0 +1,45 @@
+.article-hero {
+  width: 100%;
+  position: relative;
+  background: url('/images/intro-bg.png') center bottom no-repeat;
+  background-size: cover;
+  padding: 20rem 0 12rem 0;
+
+  @media screen and (max-width: $tablet) {
+    padding: 14rem 0 6rem 0;
+  }
+
+  @media (max-width: 574px) {
+    padding: 10rem 0 2rem 0;
+  }
+
+  .hero-info {
+    width: 100%;
+    float: left;
+
+    @media screen and (max-width: $tablet) {
+      width: 80%;
+      float: none;
+      margin: auto;
+      text-align: center;
+    }
+
+    @media screen and (max-width: $phone) {
+      width: 100%;
+    }
+
+    h1 {
+      color: #fff;
+      margin-bottom: 4rem;
+      font-size: 5.5rem;
+      font-weight: 700;
+      text-align: center;
+
+      @media screen and (max-width: $phone) {
+        font-size: 3.4rem;
+        margin-bottom: 3rem;
+      }
+
+    }
+  }
+}

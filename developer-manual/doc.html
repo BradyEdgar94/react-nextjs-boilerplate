@@ -1,0 +1,312 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ferox Documentation - a code documentation page template for codrops</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="scribbler-global.css">
+    <link rel="stylesheet" href="scribbler-doc.css">
+    <link rel="author" href="humans.txt">
+  </head>
+  <body>
+    <div class="doc__bg"></div>
+    <nav class="header">
+      <h1 class="logo"><a href="index.html">Ferox <span class="logo__thin">Doc</span></a></h1>
+      <ul class="menu">
+        <div class="menu__item toggle"><span></span></div>
+        <li class="menu__item"><a href="doc.html" class="link link--dark"><i class="fa fa-book"></i> Documentation</a></li>
+        <li class="menu__item"><a href="changelog.html" class="link link--dark"><i class="fa fa-file"></i> Changelog</a></li>
+      </ul>
+    </nav>
+    <div class="wrapper">
+      <aside class="doc__nav">
+        <ul>
+          <li class="js-btn selected">Get Started</li>
+          <li class="js-btn">Configuration</li>
+          <li class="js-btn">Project Architecture</li>
+          <li class="js-btn">Updating Menus</li>
+          <li class="js-btn">Customizing Server</li>
+          <li class="js-btn">Styling</li>
+          <li class="js-btn">Pages</li>
+          <li class="js-btn">Templates</li>
+          <li class="js-btn">Containers</li>
+          <li class="js-btn">Redux</li>
+          <li class="js-btn">SEO</li>
+          <li class="js-btn">Testing with Jest</li>
+          <li class="js-btn">Managing API Calls</li>
+          <li class="js-btn">Public Assets</li>
+          <li class="js-btn">Webpack</li>
+          <li class="js-btn">References</li>
+        </ul>
+      </aside>
+      <article class="doc__content">
+        <section class="js-section">
+          <h3 class="section__title">Get Started</h3>
+          <p>Learn how to configure installation and settings for Ferox, after installing our dependencies we will need to configure a few settings. Before starting this, you should already have your Wordpress API set up and running.</p>
+          <h3 class="section__title">Installation</h3>
+          <p>Be sure you are in the root of the project's directory before running the following command.</p>
+          <div class="code__block code__block--notabs">
+            <pre class="code code--block">
+              <code>
+                $ npm run install
+              </code>
+            </pre>
+          </div>
+          <p>After this you will have all the needed npm dependencies you need to run the intial Ferox demo.</p>
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Configuration</h3>
+          <p>Ferox by default is configured to work with a WordPress CMS for content management such as menus, layouts and page content. In order to show the demo Ferox Bootstrap theme we will need to configure our React app to point to our Wordpress instance. This can either be a local or hosted Wordpress CMS.</p>
+          <p>In the root of the project you will see a file called <span class="keybinding__label">app.config.js</span>, open this file in your text editor and update the appropriate configuration. Below you can see the values of each setting.</p>
+          <table id="customers">
+            <tr>
+              <th>Options</th>
+              <th>Value</th>
+              <th>Example</th>
+            </tr>
+            <tr>
+              <td>API_HOSTS</td>
+              <td>The URL to the WordPress CMS which our React app will use for content management.</td>
+              <td>https://my-api.com</td>
+            </tr>
+          </table>
+          <p>On some of the options there will be a default of three URL options: development, staging, production. Based on the node environment variable <span class="keybinding__label">ENV</span>, the React app will point to the appropriate API. For example when you run <span class="keybinding__label">npm run dev</span> it will set an <span class="keybinding__label">ENV</span> variable of 'development', so the app will point to the value with the key of 'development'.</p>
+          <hr />
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Project Architecture</h3>
+          <p>The architecture of this proeject was designed to be easily scalable. It follows a few key princaple such as atomic design and container component relationships.</p>
+          <p><strong>Atomic Design Pattern</strong><br/>This is a concept that views components of a page as atoms, molecules, organisms, templates, and pages. It uses a reference to basic chemisty as a pattern to follow when creating designs and wireframes. This project uses those concepts for organizing the components, stylesheets and containers so that our folders don't get too convoluted and hard to read. You can learn more about atomic design at <a class="link" href="http://atomicdesign.bradfrost.com/chapter-2/" target="_blank">here</a></p>
+          <p><strong>Container Component Relationships</strong><br/>Another important thing to note about this project's architecture is it will use a container/component relationship for complex components that are making requests to external APIs or handling complex functionality such as form validation. This is to seperate frontend markup from complex logic. This will make the markup easier to read and edit, as well as to keep complex code isolated from extra code. So if a component for example is an organisms and has a lot of logic involved with it, first make a component for the frontend HTML under <span class="keybinding__label">/components/organisms/MyComponent.js</span>. Then make a container for that component under <span class="keybinding__label">/containers/organisms/MyComponent.js</span>. You can then import the component into your container and render it along with all the extea logic. <strong>You can learn more about these container/component relationships in this <a class="link" href="https://medium.com/@learnreact/container-components-c0e67432e005" target="_blank">article</a>.</strong></p>
+          <hr />
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Updating Menus</h3>
+          <p>Menus are managed using the Wordpress CMS and can easily be added, deleted or managed with the WordPess interface. To get started find the menus interface which can be found at <span class="keybinding__label">Appearance>Menus</span>. You can then choose between different menus with the dropdown beside "Select a menu to edit". You can also add new menus with the "create a new menu" link at the top of the page.</p>
+          <p><strong>create a new menu</strong><br /> If you create a new menu in the CMS, you will need to update your React app to be able to fetch that new menu. The first step after creating a new in the CMS is to check for the index of that menu in the API. To do this you will need to go to the endpoint that lists all the menus in the CMS. This url will look like this <span class="keybinding__label">https://my-api.com/wp-json/wp-api-menus/v2/menus</span>. Here you will see a list of menus with the name and ID of each menu. After you find the ID for your menu you can add it to the end of the url like so <span class="keybinding__label">https://my-api.com/wp-json/wp-api-menus/v2/menus/{id}</span>. Here you will see the menu including the list of links. This is the URL we will use to fetch the links in our React app.</p>
+          <p>After we have our URL for fetching the menu we can add it to our api file in the React app. Go to the <span class="keybinding__label">lib/api.js</span> file. From here you will see an object with the key of <span class="keybinding__label">site</span>. Inside this object add the following snippet with the appropriate <span class="keybinding__label">ID</span>.</p>
+          <div class="tab__container">
+            <ul class="tab__menu">
+              <li class="tab active" data-tab="api">lib/api.js</li>
+              <li class="tab" data-tab="implementing">Execution</li>
+            </ul>
+            <pre class="code code--block">
+              <code class="tab__pane active api">
+                async getMyMenu () {<br/>
+                  &emsp;const response = await fetch(`${API_BASE}/wp-json/wp-api-menus/v2/menus/[ID]`)<br/>
+                  &emsp;const data = await response.json()<br/><br/>
+
+                  &emsp;return data.items<br/>
+                },
+              </code>
+              <code class="tab__pane implementing">
+                import api from 'lib/api'<br/><br/>
+                const menu = await api.site.getMyMenu()
+              </code>
+            </pre>
+          </div>
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Styling</h3>
+          <p>There are a few key points to styling components with the Ferox boilerplate. The first point is all styles for our components can be found under the <span class="keybinding__label">styles/</span> directory. Inside this directory you will see the folders are following the atomic deisgn pattern. You can read more about atomic design <a class="link" href="http://atomicdesign.bradfrost.com/chapter-2/" target="_blank">here</a>. This is the exact same structure we are using for our components directory as well. This is so when looking for the styles of a component, you can find it in the identical path it exist under the <span class="keybinding__label">styles/</span> directory.</p>
+          <p>So for example the styles for a component under <span class="keybinding__label">components/molecules/MyComponent</span> can be found under <span class="keybinding__label">styles/molecules/my-component.scss</span>. You will also see that the className and the name of the .scss file for a component is always the slugified version of its component name. So a component with the name of <span class="keybinding__label">MyComponent</span> with have a className of <span class="keybinding__label">className="my-component"</span> and a .scss file name of <span class="keybinding__label">my-component.scss</span></p>
+          <p>You can use CSS or SCSS for styling you components as webpack will compile all SCSS code into CSS for both local and production builds.</p>
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Customizing Server</h3>
+          <p>Ferox uses a custom <span class="keybinding__label">server.js</span> file that can be found in the root of the project. All the npm commands will use this server file which will run a custom express server instance. Inside this file yoou can update custom routes or any other changes you may wish to make to the server.</p>
+          <p>You can learn more about how next.js handles custom routing <a  class="link" href="https://nextjs.org/docs#custom-routes-using-props-from-url" target="_blank">here</a></p>
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Pages</h3>
+          <p>All pages in Ferox are handled using the <span class="keybinding__label">server.js</span> file. This is because most pages are controlled using the WordPress api, but you can also create static pages as long as you configure them in the server.js files above the <span class="keybinding__label">server.get("/:page", (req, res) => {})</span> block.</p>
+          <p><strong>Creating a static page</strong><br/>It is quite simple to create a static page to the app. All you have to do is create a file with the file name the same as the path. So for example to create an <span class="keybinding__label">/about-us</span> page you will just make the following page <span class="keybinding__label">/pages/about-us.js</span>. After You have created your page, you will need to update the <span class="keybinding__label">server.js</span> file to point traffic from <span class="keybinding__label">/about-us</span> to that page you just create. <strong>Any updates to the server file will require restarting the app to reflect those changes.</strong></p>
+          <p>Remeber you will need to add this configuration before the <span class="keybinding__label">server.get("/:page", (req, res) => {})</span> block.</p>
+          <div class="tab__container">
+            <ul class="tab__menu">
+              <li class="tab active" data-tab="page">pages/my-page.js</li>
+              <li class="tab" data-tab="server">server.js</li>
+            </ul>
+            <pre class="code code--block">
+              <code class="tab__pane active page">
+                export default () => &lt;h1&gt;Welcome to my page!&lt;/h1&gt;
+              </code>
+              <code class="tab__pane server">
+                server.get('/my-page', (req, res) => app.render(req, res, '/my-page'))
+              </code>
+            </pre>
+          </div>
+          <p><strong>Creating Dynamic Pages</strong><br/>We can also easily create pages with the WordPress CMS. The greate thing about this is that it doesn't require an additional configurations on the frontend! Any page created in the CMS directly translates in the React app, this is thanks to the <span class="keybinding__label">server.get("/:page", (req, res) => {})</span> block in the server file. One thing to note with this however is that when linking to your dynamically created page you must use an <span class="keybinding__label">href</span> value of <span class="keybinding__label">/default</span> and an <span class="keybinding__label">as</span> value as your actual URL.</p>
+          <div class="tab__container">
+            <ul class="tab__menu">
+              <li class="tab active" data-tab="dynamic">Dynamic Page</li>
+              <li class="tab" data-tab="static">Static Page</li>
+            </ul>
+            <pre class="code code--block">
+              <code class="tab__pane active dynamic">
+                import Link from 'next/link'<br/><br/>
+                &lt;Link href="/default" as="/about-us"&gt;Go to about us&lt;/Link&gt;
+              </code>
+              <code class="tab__pane static">
+                import Link from 'next/link'<br/><br/>
+                &lt;Link href="/about-us"&gt;Go to about us&lt;/Link&gt;
+              </code>
+            </pre>
+          </div>
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Templates</h3>
+          <p>Templating in Ferox is meant to be very flexible and scalable. When requesting page data from Wordpress, inside the page data object there will be a <span class="keybinding__label">template</span> key. It will either be an empty string or the file name of the template chosen in the page's Wordpress Dashboard. By default there will be three template option, the Default Template, Blog Landing Page Template and the Dynamic template.</p>
+          <p><strong>Default Template</strong><br/>The default template will render the render the title, content and featured image of a page in the CMS. This template is mostly used for article posts or other basic content heavy pages like a privacy policy page.</p>
+          <p><strong>Blog Landing Page Template</strong><br/>The blog landing page template will rendering a hero section and a list of all the posts that exist in the Wordpress CMS.</p>
+          <p><strong>Dynamic Template</strong><br/>The dynamic template is used to created dynamic page layouts within the WordPress CMS. It uses the modules created in the ACF Pro Layout fields <span class="keybinding__label">Custom Fields > Field Groups > Layout</span> and can created unique layouts within a page's dashboard.</p>
+          <p>See the Dynamic Layouts section for more on creating dynamic layouts with Wordpress.</p>
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Containers</h3>
+          <p>Container/Component relationship is a way to handle complex components that are making requests to external APIs or handling complex functionality such as form validation. This is to seperate frontend markup from complex logic. This will make the markup easier to read and edit, as well as to keep complex code isolated from extra code. So if a component for example is an organisms and has a lot of logic involved with it, first make a component for the frontend HTML under <span class="keybinding__label">/components/organisms/MyComponent.js</span>. Then make a container for that component under <span class="keybinding__label">/containers/organisms/MyComponent.js</span>. You can then import the component into your container and render it along with all the extea logic.</p>
+          <p>You can learn more about these container/component relationships in this <a class="link" href="https://medium.com/@learnreact/container-components-c0e67432e005" target="_blank">article</a></p>
+          <div class="tab__container">
+            <ul class="tab__menu">
+              <li class="tab active" data-tab="component">Component</li>
+              <li class="tab" data-tab="container">Container</li>
+            </ul>
+            <pre class="code code--block">
+              <code class="tab__pane active component">
+                export default (props) => &lt;h1&gt;{props.title}&lt;/h1&gt;
+              </code>
+              <code class="tab__pane container">
+                import Component from 'MyComponent'<br/><br/>
+
+                class Container extends React.Component {<br/>
+                  &emsp;constructor () {<br/>
+                  &emsp;&emsp;super()<br/>
+                  &emsp;&emsp;this.setState({ title: '' })<br/>
+                  &emsp;}<br/><br/>
+
+                  &emsp;someLogic (value) {<br/>
+                    &emsp;&emsp;this.setState({ title: value })<br/>
+                  &emsp;}<br/><br/>
+
+                  &emsp;componentDidMount () {<br/>
+                    &emsp;&emsp;this.someLogic('Hello World')<br/>
+                  &emsp;}<br/><br/>
+
+                  &emsp;render () {<br/>
+                    &emsp;&emsp;return (<br/>
+                      &emsp;&emsp;&emsp;&lt;Component title={this.state.title} /&gt;<br/>
+                    &emsp;&emsp;)<br/>
+                  &emsp;}<br/>
+                }
+              </code>
+            </pre>
+          </div>
+          <hr />
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Redux</h3>
+          <p>By default Redux will be installed and configured in your Ferox boilerplate, any changes you may wish to make should be done under the /redux directory. By default Redux will also store your menu data from the API in the Redux store. This is to prevent the app from requesting the menu data more than once, which will speed up page transitions.</p>
+          <p>There are three main Redux file you may want to update. The <span class="keybinding__label">redux/initialState.js</span>, <span class="keybinding__label">redux/actions.js</span>, <span class="keybinding__label">redux/reducer.js</span></p>
+          <p><strong>Updating Initial State</strong><br/>The <span class="keybinding__label">redux/initialState.js</span> file is where you can set your default state values in the Redux store. it is a basic Javascript object, so just add a key/value pair where the key is the name of the state item and the value is the default value of the state item.</p>
+          <p>An example of an initial state would look like the following:</p>
+          <pre class="code code--block">
+            <code class="tab__pane active">
+              export default ({
+                &emsp;example: false,
+                &emsp;menus: {},
+              })
+            </code>
+          </pre>
+          <p><strong>Adding a Redux Action</strong><br/>When creating a new Redux action there are three basic steps invloved. The first thing you need to do is add an function(action) inside the <span class="keybinding__label">redux/actions.js</span> file. The function should be exported as a const and should have a readable name. The function will return another function which will dispatch an action to the store. The only value you will need to change in the example below is the <span class="keybinding__label">type</span> which will be used to determine which value to update in the reducer. After you created the action you will also need to add a key for the action type in the actionTypes object at the top of the <span class="keybinding__label">redux/actions.js</span> file.</p>
+          <pre class="code code--block">
+            <code class="tab__pane active">
+              export const actionTypes = ({
+                &emsp;....
+                &emsp;MY_ACTION: 'MY_ACTION',
+              })
+
+              export const myAction = (value) => {
+                &emsp;return (dispatch, getState) => {
+                  &emsp;&emsp;return dispatch({ type: actionTypes.MY_ACTION, value: value })
+                &emsp;}
+              }
+            </code>
+          </pre>
+          <p>After creating an action, next you will need to update the <span class="keybinding__label">redux/reducer.js</span> file. Inside this file you will see an object called <span class="keybinding__label">mainReducer</span>. Inside this object there will be a switch statement where you can add a condition for your new action. Add the following snippet in the main switch statement.</p>
+          <pre class="code code--block">
+            <code class="tab__pane active">
+              case actionTypes.MY_ACTION:
+                &emsp;return Object.assign({}, state, {
+                  &emsp;&emsp;myValue: action.value
+                &emsp;})
+            </code>
+          </pre>
+          <p>Note that the <span class="keybinding__label">myValue</span> key in the snippet above is to be updated with intialState key you wish to update.</p>
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">SEO</h3>
+          <p>Ferox by default will be opitmized for custom SEO management and SEO performance. The WordPress CMS will be using the Yoast plugin where someone can edit the Custom SEO content for a page. At the bottom of a page's dashboard you will see "Yoast SEO" where you can edit the page title, desction and social sharing values. If left empty the meta values will use the default SEO values that can be found in the <span class="keybinding__label">app.config.json</span> file under SEO.</p>
+          <p>These values are then loaded into the <span class="keybinding__label">components/molecules/Head</span> component where all the &lt;meta /&gt; tags are set.</p>
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Testing with Jest</h3>
+          <p>By default test driven development will be configured using Jest and Enzyme. Configurations for Jest can be found under the <span class="keybinding__label">jest.config.js</span> file. The <span class="keybinding__label">jest.setup.js</span> file is used to create a preset configurations for each test file.</p>
+          <p>To add a test for a component or file just add a file with the <span class="keybinding__label">.test.js</span> extension. For example adding test to <span class="keybinding__label">components/molecules/MyComponent</span>, just add a <span class="keybinding__label">components/molecules/MyComponent/index.test.js</span> file. Jest will then detect any .test.js file and run a test on them.</p>
+          <p>In order to run your tests you will need to run the  <span class="keybinding__label">npm run test</span> command which will run and watch all your tests.</p>
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Managing API Calls</h3>
+          <p>Handling any API call including the WordPress CMS or third party apis should be managed in the <span class="keybinding__label">lib/api.js</span> file. Inside the api file there will be an object with specfic keys for organizing different requests. By default there will be a site key for mananging all request relates to the site's CMS. Below we be an example for connecting to an Instagram API</p>
+          <div class="tab__container">
+            <ul class="tab__menu">
+              <li class="tab active" data-tab="api">lib/api.js</li>
+              <li class="tab" data-tab="implementing">Execution</li>
+            </ul>
+            <pre class="code code--block">
+              <code class="tab__pane active api">
+                const api = {<br/>
+                  &emsp;site: {<br/>
+                    &emsp;&emsp;....<br/>
+                  &emsp;},<br/>
+                  &emsp;instagram: {<br/>
+                    &emsp;&emsp;async getUserProfile (id) {<br/>
+                    &emsp;&emsp;&emsp;const response = await fetch(`https://instagram.com/getUser/${id}`)<br/>
+                    &emsp;&emsp;&emsp;const data = await response.json()<br/><br/>
+
+                    &emsp;&emsp;&emsp;return data<br/>
+                    &emsp;&emsp;}<br/>
+                  &emsp;}<br/>
+                }
+              </code>
+              <code class="tab__pane implementing">
+                import api from 'lib/api'<br/><br/>
+                const menu = await api.instagram.getUserProfile(1234)
+              </code>
+            </pre>
+          </div>
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Public Assets</h3>
+          <p>Public asssets are managed following the Next.js V9 protocol. So if you want to use any static assets such as CSS files, JS files, Images, Icons or any other static files you may need to reference in your code, make sure to put them under the <span class="keybinding__label">public</span> folder. You can then access those files anywhere in your code by just adding a / and then the path to the file in the public folder. So for example if you have the file <span class="keybinding__label">public/images/photo-of-doom.png</span> you can access that image in your code with <span class="keybinding__label">/images/photo-of-doom.png</span></p>
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">References</h3>
+          <ul>
+            <li><a href="https://nextjs.org/docs" target="_blank" class="link">Next JS Docs</a></li>
+          </ul>
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Webpack</h3>
+          <p>Any Webpack configurations you may need to make can be done under the <span class="keybinding__label">next.config.js</span> file. You can learn more about Webpack configs with Next.js <a class="link" href="https://nextjs.org/docs#customizing-webpack-config" target="_blank">here</a></p>
+        </section>
+      </article>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="scribbler.js"></script>
+  </body>
+</html>

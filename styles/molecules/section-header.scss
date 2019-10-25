@@ -1,0 +1,29 @@
+.section-header {
+  &.light {
+    h3, p {
+      color: $white;
+    }
+  }
+
+
+  h3 {
+    font-size: 3.6rem;
+    color: $secondary;
+    text-align: center;
+    font-weight: 500;
+    position: relative;
+  }
+
+  p {
+    text-align: center;
+    margin: auto;
+    font-size: 1.5rem;
+    padding-bottom: 6rem;
+    color: $secondary-light;
+    width: 50%;
+
+    @media screen and (max-width: $phone) {
+      width: 100%;
+    }
+  }
+}

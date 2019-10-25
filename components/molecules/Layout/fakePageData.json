@@ -1,0 +1,12 @@
+{
+  "page" : {
+    "title": {
+      "rendered": "Hello World"
+    },
+    "content": {
+      "rendered": "More hellos"
+    },
+    "template": ""
+  },
+  "layout": []
+}

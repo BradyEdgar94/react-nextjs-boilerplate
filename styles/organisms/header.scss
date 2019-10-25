@@ -1,0 +1,31 @@
+// main: style.scss
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+header {
+  height: 8rem;
+  transition: all 0.5s;
+  z-index: 997;
+  padding: 2rem 0;
+  background: #fff;
+  box-shadow: 0 0 3rem rgba(127, 137, 161, 0.3);
+
+  &.header-scrolled, &.header-pages  {
+    height: 6rem;
+    padding: 1rem 0;
+  }
+
+  @media screen and (max-width: $tablet) {
+    height: 6rem;
+    padding: 1rem 0;
+  }
+
+  .logo {
+    img {
+      padding: 0;
+      margin: 0.7rem 0;
+      max-height: 2.6rem;
+    }
+  }
+}

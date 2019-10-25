@@ -1,0 +1,200 @@
+.main-nav {
+  &, * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  > ul > li {
+    position: relative;
+    white-space: nowrap;
+    float: left;
+  }
+
+  a {
+    display: block;
+    position: relative;
+    color: darken($primary-dark, 15%);
+    padding: 1rem 1.5rem;
+    transition: 0.3s;
+    font-size: 1.4rem;
+    font-family: $primary-font;
+    font-weight: 500;
+  }
+
+  a:hover, .active > a, li:hover > a {
+    color: $primary;
+    text-decoration: none;
+  }
+
+  /* Drop Down */
+
+  .drop-down ul {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: calc(100% + 3rem);
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    padding: 1rem 0;
+    background: #fff;
+    box-shadow: 0 0 3rem rgba(127, 137, 161, 0.25);
+    transition: ease all 0.3s;
+  }
+
+  .drop-down:hover > ul {
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
+  }
+
+  .drop-down li {
+    min-width: 18rem;
+    position: relative;
+  }
+
+  .drop-down ul a {
+    padding: 1rem 2rem;
+    font-size: 1.3rem;
+    color: darken($primary-dark, 15%);
+  }
+
+  .drop-down ul a:hover, .drop-down ul .active > a, .drop-down ul li:hover > a {
+    color: $primary;
+  }
+
+  .drop-down > a:after {
+    content: "\f107";
+    font-family: FontAwesome;
+    padding-left: 1rem;
+  }
+
+  /* Deep Drop Down */
+
+  .drop-down .drop-down ul {
+    top: 0;
+    left: calc(100% - 3rem);
+  }
+
+  .drop-down .drop-down:hover > ul {
+    opacity: 1;
+    top: 0;
+    left: 100%;
+  }
+
+  .drop-down .drop-down > a {
+    padding-right: 3.5rem;
+  }
+
+  .drop-down .drop-down > a:after {
+    content: "\f105";
+    position: absolute;
+    right: 15rem;
+  }
+
+}
+
+/* Mobile Navigation */
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow-y: auto;
+  left: -26rem;
+  width: 26rem;
+  padding-top: 1.8rem;
+  background: rgba($secondary-dark, 0.8);
+  transition: 0.4s;
+
+  * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    display: block;
+    position: relative;
+    color: #fff;
+    padding: 1rem 2rem;
+    font-weight: 500;
+  }
+
+  a:hover, .active > a, li:hover > a {
+    color: $primary-light;
+    text-decoration: none;
+  }
+
+  .drop-down > a:after {
+    content: "\f078";
+    font-family: FontAwesome;
+    padding-left: 1rem;
+    position: absolute;
+    right: 15rem;
+  }
+
+  .active.drop-down > a:after {
+    content: "\f077";
+  }
+
+  .drop-down > a {
+    padding-right: 3.5rem;
+  }
+
+  .drop-down ul {
+    display: none;
+    overflow: hidden;
+  }
+
+  .drop-down li {
+    padding-left: 2rem;
+  }
+}
+
+.mobile-nav-toggle {
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 9998;
+  border: 0;
+  background: none;
+  font-size: 2.4rem;
+  outline: none !important;
+  line-height: 1;
+  cursor: pointer;
+  text-align: right;
+  transition: all 0.4s;
+
+  i {
+    margin: 1.8rem 1.8rem 0 0;
+    color: darken($primary-dark, 15%);
+  }
+
+}
+
+.mobile-nav-overly {
+  width: 100%;
+  height: 100%;
+  z-index: 9997;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: rgba($secondary-dark, 0.8);
+  overflow: hidden;
+  display: none;
+}
+
+.mobile-nav-active {
+  overflow: hidden;
+
+  .mobile-nav {
+    left: 0;
+  }
+
+  .mobile-nav-toggle i {
+    color: #fff;
+  }
+}

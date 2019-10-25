@@ -1,0 +1,30 @@
+{
+  "env": {
+    "development": {
+      "presets": ["next/babel"],
+      "plugins": ["@babel/plugin-proposal-async-generator-functions"]
+    },
+    "staging": {
+      "presets": ["next/babel"],
+      "plugins": ["@babel/plugin-proposal-async-generator-functions"]
+    },
+    "production": {
+      "presets": ["next/babel"],
+      "plugins": [
+        "@babel/plugin-proposal-async-generator-functions",
+        ["react-remove-properties", {
+          "properties": [
+            "data-test",
+            "data-foo"
+          ]}
+        ]
+      ]
+    },
+    "test": {
+      "presets": ["@babel/preset-env","@babel/preset-react"],
+      "plugins": [
+        ["@babel/plugin-proposal-class-properties", { "loose": true }]
+      ]
+    }
+  }
+}
